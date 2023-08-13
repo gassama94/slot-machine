@@ -1,5 +1,12 @@
 
+
 def deposit():
+    """
+    Prompt the player to deposit money.
+
+    Returns an interger of the deposited amount.
+    """
+
     while True:
         amount = input("What would you like to deposit? $")
         if amount.isdigit():
@@ -13,7 +20,9 @@ def deposit():
 
     return amount
 
-deposit()
+
+def main():
+    balance = deposit()
 
 
 # You can delete these comments, but do not change the name of this file
