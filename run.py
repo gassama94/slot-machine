@@ -1,4 +1,5 @@
 import random
+
 print("Welcome to the Slot Machine Game!")
 
 
@@ -48,9 +49,10 @@ def check_winnings(columns, lines, bet, values):
     """
     winnings = 0
     winning_lines = []
+
     # Iterate through each line
     for line in range(lines):
-        symbol = columns[0][line]   
+        symbol = columns[0][line]
         # Check if all symbols on the same line are identical
         for column in columns:
             symbol_to_check = column[line]
@@ -68,32 +70,35 @@ def get_slot_machine_spin(rows, cols, symbols):
     Generate a random spin result for the slot machine.
 
     Args:
-    - rows (int): Number of rows in the slot machine grid.
-    - cols (int): Number of columns in the slot machine grid.
-    - symbols (dict): Dictionary of symbols and their counts.
+        rows (int): Number of rows in the slot machine grid.
+        cols (int): Number of columns in the slot machine grid.
+        symbols (dict): Dictionary of symbols and their counts.
 
     Returns:
-    - columns (list): List of lists representing the slot machine columns.
+        columns (list): List of lists representing the slot machine columns.
     """
     all_symbols = []
+
     # Populate all_symbols with symbols based on their counts
     for symbol, symbol_count in symbols.items():
         all_symbols.extend([symbol] * symbol_count)
 
     columns = []
+
     # Generate column data for each column
     for _ in range(cols):
         column = []
         current_symbols = all_symbols[:]
+
         # Generate row data for each row in the column
         for _ in range(rows):
             value = random.choice(current_symbols)
             # Ensure unique symbols
-            current_symbols.remove(value) 
+            current_symbols.remove(value)
             column.append(value)
 
         # Add column to columns list
-        columns.append(column) 
+        columns.append(column)
 
     return columns
 
@@ -103,16 +108,17 @@ def print_slot_machine(columns):
     Print the current state of the slot machine.
 
     Args:
-    - columns (list): List of lists representing the slot machine columns.
+        columns (list): List of lists representing the slot machine columns.
     """
     # Iterate through each row
     for row in range(len(columns[0])):
         # Print symbols for each column in the row
         for i, column in enumerate(columns):
             end_character = " | " if i != len(columns) - 1 else ""
-            print(column[row], end=end_character)           
+            print(column[row], end=end_character)
+
         # Print a newline after each row
-        print()  
+        print()
 
 
 def deposit():
@@ -140,11 +146,11 @@ def get_number_of_lines():
     Prompt the user to input the number of lines they want to bet on.
 
     Returns:
-    - lines (int): The number of lines the user wants to bet on.
+        lines (int): The number of lines the user wants to bet on.
     """
     while True:
         lines = input(
-            f"Enter the number of lines to bet on (1-{MAX_LINES} )? ")
+            f"Enter the number of lines to bet on (1-{MAX_LINES})? ")
         if lines.isdigit():
             lines = int(lines)
             if 1 <= lines <= MAX_LINES:
@@ -162,7 +168,7 @@ def get_bet():
     Prompt the user to input the bet amount for each line.
 
     Returns:
-    - bet (int): The bet amount for each line.
+        bet (int): The bet amount for each line.
     """
     while True:
         amount = input("What would you like to bet on each line? $")
@@ -179,23 +185,36 @@ def get_bet():
 
 
 def spin(balance):
+    """
+    Play a round of the slot machine game.
+
+    This function allows the player to place a bet and spin the slot machine.
+    It calculates the total winnings, checks for winning combinations, and
+    updates the player's balance accordingly.
+
+    Args:
+        balance (int): The current balance of the player.
+
+    Returns:
+        net_winnings (int): The net result of the game (winnings - total bet).
+    """
     lines = get_number_of_lines()
     while True:
         bet = get_bet()
         total_bet = bet * lines
 
         if total_bet > balance:
-            print(f"Not have enough balance, your current balance is: ${balance}  ")
+            print(f"Insufficent funds, your current balance is: ${balance}")
         else: 
             break    
 
-    print(f"Betting €{bet} on {lines} lines. Total bet is equal to: ${total_bet}")
+    print(f"Betting ${bet} on {lines} lines. Total bet: ${total_bet}")
 
     slots = get_slot_machine_spin(ROWS, COLS, symbol_count)
     print_slot_machine(slots)
     winnings, winning_lines = check_winnings(slots, lines, bet, symbol_value)
     print(f"You won ${winnings}.")
-    print(f"You won on lines:", *winning_lines)
+    print("You won on lines:", *winning_lines)
     return winnings - total_bet
 
 
@@ -213,4 +232,6 @@ def main():
 
     print(f"You left with ${balance}")
 
-main()
+
+if __name__ == "__main__":
+    main()
