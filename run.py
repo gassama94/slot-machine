@@ -1,6 +1,9 @@
+
+
 MAX_LINES = 3
 MAX_BET = 100
 MIN_BET = 1
+
 
 def deposit():
     """
@@ -8,7 +11,6 @@ def deposit():
 
     Returns an integer of the deposited amount by the player.
     """
-
     while True:
         amount = input("What would you like to deposit? $")
         if amount.isdigit():
@@ -21,6 +23,7 @@ def deposit():
             print("Please enter a number!")
 
     return amount
+
 
 def get_number_of_lines():
     """
@@ -43,10 +46,45 @@ def get_number_of_lines():
 
     return lines
 
+
+def get_bet():
+    """
+    Prompt the user to input the bet amount for each line.
+
+    Returns:
+    - bet (int): The bet amount for each line.
+    """
+    while True:
+        amount = input("What would you like to bet on each line? $")
+        if amount.isdigit():
+            amount = int(amount)
+            if MIN_BET <= amount <= MAX_BET:
+                break
+            else:
+                print(f"Amount must be ${MIN_BET} - ${MAX_BET}.")
+        else:
+            print("Please enter a number!")
+
+    return amount
+
+
 def main():
+    """
+    The main function to run the slot machine game.
+    """
     balance = deposit()
     lines = get_number_of_lines()
-    print(balance, lines)
+    while True:
+        bet = get_bet()
+        total_bet = bet * lines
+
+        if total_bet > balance:
+            print(f"Not have enough balance, your current balance is: ${balance}  ")
+        else: 
+            break    
+
+    print(f"Betting €{bet} on {lines} lines. total bet is equal to: ${total_bet}")
+   
 
 if __name__ == "__main__":
     main()
