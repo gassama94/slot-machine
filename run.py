@@ -1,10 +1,10 @@
-
+MAX_LINES = 3
 
 def deposit():
     """
     Prompt the player to deposit money.
 
-    Returns an interger of the deposited amount.
+    Returns an integer of the deposited amount.
     """
 
     while True:
@@ -20,10 +20,31 @@ def deposit():
 
     return amount
 
+def get_number_of_lines():
+    """
+    Prompt the user to input the number of lines they want to bet on.
+
+    Returns:
+    - lines (int): The number of lines the user wants to bet on.
+    """
+    while True:
+        lines = input(
+            "Enter the number of lines to bet on (1-" + str(MAX_LINES) + ")? ")
+        if lines.isdigit():
+            lines = int(lines)
+            if 1 <= lines <= MAX_LINES:
+                break
+            else:
+                print("Enter a valid number of lines.")
+        else:
+            print("Please enter a number.")
+
+    return lines
 
 def main():
     balance = deposit()
+    lines = get_number_of_lines()
+    print(balance, lines)
 
-
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+if __name__ == "__main__":
+    main()
