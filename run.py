@@ -1,8 +1,64 @@
-
+import random
+print("Welcome to the Slot Machine Game!")
 
 MAX_LINES = 3
 MAX_BET = 100
 MIN_BET = 1
+
+ROWS = 3
+COLS = 3
+
+symbol_count = {
+    "A": 2,
+    "B": 4,
+    "C": 6,
+    "D": 8,
+}
+
+
+def get_slot_machine_spin(rows, cols, symbols):
+    """
+    Generate a random spin result for the slot machine.
+
+    Args:
+    - rows (int): Number of rows in the slot machine grid.
+    - cols (int): Number of columns in the slot machine grid.
+    - symbols (dict): Dictionary of symbols and their counts.
+
+    Returns:
+    - columns (list): List of lists representing the slot machine columns.
+    """
+    all_symbols = []
+    for symbol, symbol_count in symbols.items():
+        all_symbols.extend([symbol] * symbol_count)
+
+    columns = []
+    for _ in range(cols):
+        column = []
+        current_symbols = all_symbols[:]
+        for _ in range(rows):
+            value = random.choice(current_symbols)
+            current_symbols.remove(value)
+            column.append(value)
+
+        columns.append(column)
+
+    return columns
+
+
+def print_slot_machine(columns):
+    """
+    Print the current state of the slot machine.
+
+    Args:
+    - columns (list): List of lists representing the slot machine columns.
+    """
+    for row in range(len(columns[0])):
+        for i, column in enumerate(columns):
+            end_character = " | " if i != len(columns) - 1 else ""
+            print(column[row], end=end_character)
+
+        print()
 
 
 def deposit():
@@ -83,7 +139,10 @@ def main():
         else: 
             break    
 
-    print(f"Betting €{bet} on {lines} lines. total bet is equal to: ${total_bet}")
+    print(f"Betting €{bet} on {lines} lines. Total bet is equal to: ${total_bet}")
+
+    slots = get_slot_machine_spin(ROWS, COLS, symbol_count)
+    print_slot_machine(slots)
    
 
 if __name__ == "__main__":
