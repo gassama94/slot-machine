@@ -128,7 +128,7 @@ def deposit():
     Returns an integer of the deposited amount by the player.
     """
     while True:
-        amount = input("What would you like to deposit? $")
+        amount = input("What would you like to deposit? $\n")
         if amount.isdigit():
             amount = int(amount)
             if amount > 0:
@@ -150,7 +150,7 @@ def get_number_of_lines():
     """
     while True:
         lines = input(
-            f"Enter the number of lines to bet on (1-{MAX_LINES})? ")
+            f"Enter the number of lines to bet on (1-{MAX_LINES})?\n")
         if lines.isdigit():
             lines = int(lines)
             if 1 <= lines <= MAX_LINES:
@@ -171,7 +171,7 @@ def get_bet():
         bet (int): The bet amount for each line.
     """
     while True:
-        amount = input("What would you like to bet on each line? $")
+        amount = input("What would you like to bet on each line? $\n")
         if amount.isdigit():
             amount = int(amount)
             if MIN_BET <= amount <= MAX_BET:
@@ -225,7 +225,7 @@ def main():
     balance = deposit()
     while True:
         print(f"Current balance is ${balance}")
-        answer = input("Press enter to spin. (q to quit)")
+        answer = input("Press enter to spin. (q to quit)\n")
         if answer == "q":
             break
         balance += spin(balance)
