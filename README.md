@@ -2,7 +2,10 @@
 
 Welcome to the Slot Machine Game! This is a simple text-based game where players can bet on lines and try their luck at the slot machine. Have fun exploring the features of the Slot Machine Game and enjoy the thrill of spinning the virtual reels! 
 
-Here is live version of my project![]
+Here is live version of my project! [Here](https://slott-machine-83a907620c24.herokuapp.com/)
+
+![Realistic Slot Machine Simulation](images/python-1.png)
+
 ## Table of Contents
 
 - [How to Play](#how-to-play)
@@ -50,15 +53,26 @@ Here is live version of my project![]
 
 - **Realistic Slot Machine Simulation:** Experience the excitement of a classic slot machine game with a realistic simulation of spinning reels and symbol combinations.
 
+![Realistic Slot Machine Simulation](images/python-1.png)
+
+
 - **Dynamic Betting:** Choose the number of lines you want to bet on and the amount you want to bet per line, allowing for customizable gameplay.
+
+![Dynamic Betting](images/python-3.png)
 
 - **Symbol Combinations:** The game checks for winning combinations across all columns on a single line, and calculates your winnings based on symbol values.
 
+![User-Friendly](images/python-2.png)
+
 - **Interactive Interface:** The game provides an interactive interface with clear prompts and instructions for each step, making it easy for players to participate.
+
+![Interactive Interface](images/python-4.png)
+
 
 - **Balance Management:** Players start with a balance and can continue playing until they decide to quit or their balance runs out.
 
 - **User-Friendly:** The game is designed to be user-friendly, guiding players through the steps of placing bets, spinning the slot machine, and checking their winnings.
+
 
 
 ## Data Model
@@ -175,7 +189,6 @@ Follow these steps to deploy your Slot Machine Game on Heroku:
    - Click "Reveal Config Vars."
    - Add the following environment variables:
      - Key: `port`, Value: `8000`
-     - Key: `CREDS`, Value: [Your Google credentials]
    - Save the added variables.
 
 4. **Set Up Buildpacks:**
