@@ -145,7 +145,7 @@ def print_slot_machine(columns):
             # Print a newline after each row
             print(Style.RESET_ALL)
     except ValueError:
-        print(Fore.RED + "An error occurred while printing the slot machine:" + Style.RESET_ALL)
+        print(Fore.RED + "Error printing the slot machine:" + Style.RESET_ALL)
 
 
 def deposit():
