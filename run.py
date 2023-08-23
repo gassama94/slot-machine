@@ -1,6 +1,15 @@
 import random
+import colorama
+from colorama import Fore, Style
+
+colorama.init(autoreset=True)
 
 print("Welcome to the Slot Machine Game!")
+print("This is a simple game where you can bet on 1 to 3 lines.")
+print("Win by getting identical symbols across a line.")
+print("If you get any line, we are going to multiply your bet")
+print("with the value of the line and add it to your balance.")
+print("Have fun exploring Slot Machine Game. Enjoy the thrill of spinning!")
 
 
 MAX_LINES = 3
@@ -92,10 +101,14 @@ def get_slot_machine_spin(rows, cols, symbols):
 
         # Generate row data for each row in the column
         for _ in range(rows):
-            value = random.choice(current_symbols)
-            # Ensure unique symbols
-            current_symbols.remove(value)
-            column.append(value)
+            try:
+                value = random.choice(current_symbols)
+                # Ensure unique symbols
+                current_symbols.remove(value)
+                column.append(value)
+            except IndexError:
+                print("Error: Not enough unique symbols available.")
+                return None
 
         # Add column to columns list
         columns.append(column)
@@ -110,15 +123,29 @@ def print_slot_machine(columns):
     Args:
         columns (list): List of lists representing the slot machine columns.
     """
-    # Iterate through each row
-    for row in range(len(columns[0])):
-        # Print symbols for each column in the row
-        for i, column in enumerate(columns):
-            end_character = " | " if i != len(columns) - 1 else ""
-            print(column[row], end=end_character)
+    try:
+        # Iterate through each row
+        for row in range(len(columns[0])):
+            # Print symbols for each column in the row
+            for i, column in enumerate(columns):
+                end_character = " | " if i != len(columns) - 1 else ""
+                symbol = column[row]
+                if symbol == "A":
+                    colored_symbol = Fore.RED + symbol
+                elif symbol == "B":
+                    colored_symbol = Fore.GREEN + symbol
+                elif symbol == "C":
+                    colored_symbol = Fore.BLUE + symbol
+                elif symbol == "D":
+                    colored_symbol = Fore.YELLOW + symbol
+                else:
+                    colored_symbol = symbol
+                print(colored_symbol, end=end_character)
 
-        # Print a newline after each row
-        print()
+            # Print a newline after each row
+            print(Style.RESET_ALL)
+    except ValueError:
+        print(Fore.RED + "An error occurred while printing the slot machine:" + Style.RESET_ALL)
 
 
 def deposit():
@@ -225,7 +252,7 @@ def main():
     balance = deposit()
     while True:
         print(f"Current balance is ${balance}")
-        answer = input("Press enter to spin. (q to quit)\n")
+        answer = input("Press anything to spin. (q to quit)\n")
         if answer == "q":
             break
         balance += spin(balance)

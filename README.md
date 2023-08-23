@@ -110,19 +110,28 @@ The `main` function orchestrates the overall flow of the game. It handles player
 
 ## Testing
 
-The Slot Machine Game has undergone testing to ensure its functionality and reliability. The following testing strategies were employed:
+### Functional Testing
 
-### Unit Testing
+Functional testing focused on testing the game's core functionality, such as placing bets, spinning the slot machine, and calculating winnings. This testing was essential to ensure that the game behaves as expected during gameplay.
 
-Unit tests were conducted for individual functions within the game to verify that they produce the expected outputs given various inputs. For instance, the `check_winnings` function was tested with different column configurations to validate its ability to identify winning combinations accurately.
+### Testing Colorful Output with Colorama
 
-### Integration Testing
+The Slot Machine Game features colorful output using the `colorama` library to enhance the gaming experience. While unit tests do not capture colored output directly, you can test the game's color features in your IDE's console. Here's how:
 
-Integration tests were performed to verify the interaction between different game components. This included testing how the `spin` function interacts with the `get_slot_machine_spin`, `check_winnings`, and other supporting functions. The objective was to ensure seamless coordination between different game mechanics.
+1. Run the game in your IDE or terminal.
+2. Observe the colorful symbols displayed in the slot machine.
+3. Confirm that symbols "A," "B," "C," and "D" are displayed in their respective colors: red, green, blue, and yellow.
+
+![Colorful Output](images/color-output.png)
+
+
+### Manual Testing
+
+The game was manually tested by playing various rounds, placing different bets, and observing the balance, winnings, and outcomes. This hands-on testing helped uncover any issues that might not be covered by automated testing.
 
 ### Player Experience Testing
 
-User testing was conducted to evaluate the overall player experience. A diverse group of friends played the game, providing feedback on user interface clarity, ease of use, and overall enjoyment. This feedback was instrumental in refining the user interaction aspects of the game.
+User testing was conducted to evaluate the overall player experience. A different group of friends played the game, providing feedback on user interface clarity, ease of use, and overall enjoyment. This feedback was instrumental in refining the user interaction aspects of the game.
 
 ### Error Handling and Edge Cases
 
