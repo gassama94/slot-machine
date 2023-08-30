@@ -1,15 +1,41 @@
+import os
 import random
 import colorama
 from colorama import Fore, Style
 
 colorama.init(autoreset=True)
 
-print("Welcome to the Slot Machine Game!")
-print("This is a simple game where you can bet on 1 to 3 lines.")
-print("Win by getting identical symbols across a line.")
-print("If you get any line, we are going to multiply your bet")
-print("with the value of the line and add it to your balance.")
-print("Have fun exploring Slot Machine Game. Enjoy the thrill of spinning!")
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def print_colored_bold(text, color_code):
+    bold_code = "\033[1m"
+    reset_code = "\033[0m"
+    print(f"{bold_code}{color_code}{text}{reset_code}")
+
+
+WELCOME_MESSAGE = (
+    Fore.YELLOW
+    + "Welcome to the Slot Machine Game!\n"
+    + Style.RESET_ALL
+)
+
+GAME_EXPLAINATION = (
+    "This is a simple game where you can bet on 1 to 3 lines.\n"
+    "Win by getting identical symbols across a line.\n"
+    "If you get any line, we are going to multiply your bet\n"
+    "with the value of the line and add it to your balance."
+
+)
+print_colored_bold(WELCOME_MESSAGE, Fore.YELLOW)
+print(GAME_EXPLAINATION)
+print()
+print_colored_bold("Enjoy the thrill of spinning!", Fore.YELLOW)
+
+input("Press Enter to start the game...")
+clear_screen()
 
 
 MAX_LINES = 3
@@ -155,15 +181,20 @@ def deposit():
     Returns an integer of the deposited amount by the player.
     """
     while True:
-        amount = input("What would you like to deposit? $\n")
+        amount = input(
+            Fore.YELLOW + "What would you like to deposit? $\n"
+            + Style.RESET_ALL)
         if amount.isdigit():
             amount = int(amount)
             if amount > 0:
                 break
             else:
-                print("Amount must be greater than 0.")
+                print(
+                    Fore.RED +
+                    "Amount must be greater than 0."
+                    + Style.RESET_ALL)
         else:
-            print("Please enter a number!")
+            print(Fore.RED + "Please enter a number!" + Style.RESET_ALL)
 
     return amount
 
@@ -176,16 +207,19 @@ def get_number_of_lines():
         lines (int): The number of lines the user wants to bet on.
     """
     while True:
-        lines = input(
-            f"Enter the number of lines to bet on (1-{MAX_LINES})?\n")
+        print_colored_bold(
+                f"Enter the number of lines to bet on (1-{MAX_LINES})?",
+                Fore.YELLOW)
+        lines = input()
         if lines.isdigit():
             lines = int(lines)
             if 1 <= lines <= MAX_LINES:
                 break
             else:
-                print("Enter a valid number of lines.")
+                print_colored_bold(
+                    "Enter a valid number of lines.", Fore.RED)
         else:
-            print("Please enter a number.")
+            print_colored_bold("Please enter a number.", Fore.RED)
 
     return lines
 
@@ -198,15 +232,19 @@ def get_bet():
         bet (int): The bet amount for each line.
     """
     while True:
-        amount = input("What would you like to bet on each line? $\n")
+        print_colored_bold(
+                "What would you like to bet on each line? $",
+                Fore.YELLOW)
+        amount = input()
         if amount.isdigit():
             amount = int(amount)
             if MIN_BET <= amount <= MAX_BET:
                 break
             else:
-                print(f"Amount must be ${MIN_BET} - ${MAX_BET}.")
+                print_colored_bold(
+                    f"Amount must be ${MIN_BET} - ${MAX_BET}.", Fore.RED)
         else:
-            print("Please enter a number!")
+            print_colored_bold("Please enter a number!", Fore.RED)
 
     return amount
 
@@ -251,7 +289,7 @@ def main():
     """
     balance = deposit()
     while True:
-        print(f"Current balance is ${balance}")
+        print_colored_bold(f"Current balance is ${balance}", Fore.YELLOW)
         answer = input("Press anything to spin. (q to quit)\n")
         if answer == "q":
             break
