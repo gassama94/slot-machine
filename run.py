@@ -33,7 +33,7 @@ GAME_EXPLAINATION = (
 print_colored_bold(WELCOME_MESSAGE, Fore.YELLOW)
 print(GAME_EXPLAINATION)
 print()
-print_colored_bold("Enjoy the thrill of spinning!", Fore.YELLOW)
+print_colored_bold("- 🎰 Enjoy the thrill of spinning! 🎰 -", Fore.BLUE)
 
 input("Press Enter to start the game...")
 clear_screen()
@@ -290,7 +290,7 @@ def main():
     """
     balance = deposit()
     while True:
-        print_colored_bold(f"Current balance is ${balance}", Fore.YELLOW)
+        print_colored_bold(f"Current balance is ${balance}", Fore.GREEN)
         answer = input("Press anything to spin. (q to quit)\n")
         if answer == "q":
             break
