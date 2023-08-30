@@ -11,16 +11,17 @@ def clear_screen():
 
 
 def print_colored_bold(text, color_code):
-    bold_code = "\033[1m"
-    reset_code = "\033[0m"
+    bold_code = "\033[1m"  # ANSI escape code for bold text
+    reset_code = "\033[0m"  # ANSI escape code to reset formatting
     print(f"{bold_code}{color_code}{text}{reset_code}")
 
 
 WELCOME_MESSAGE = (
-    Fore.YELLOW
-    + "Welcome to the Slot Machine Game!\n"
+    Fore.BLUE
+    + " | 🎰 Welcome to the Slot Machine Game! 🎰 |\n"
     + Style.RESET_ALL
 )
+
 
 GAME_EXPLAINATION = (
     "This is a simple game where you can bet on 1 to 3 lines.\n"

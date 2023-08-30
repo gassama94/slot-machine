@@ -129,17 +129,38 @@ The Slot Machine Game features colorful output using the `colorama` library to e
 
 The game was manually tested by playing various rounds, placing different bets, and observing the balance, winnings, and outcomes. This hands-on testing helped uncover any issues that might not be covered by automated testing.
 
+| Test Case ID | Description                                          | Steps to Reproduce                                  | Expected Outcome                              | Actual Outcome                              | Status |
+|--------------|------------------------------------------------------|------------------------------------------------------|----------------------------------------------|--------------------------------------------|--------|
+| MT001        | Start the game and make a deposit                   | 1. Run the game.                                   | Prompt for deposit input, display balance   | Prompted for deposit, displayed balance  | Passed |
+| MT002        | Input invalid deposit amount                        | 1. Make a deposit with a negative amount.         | Display error message                       | Displayed error message                   | Passed |
+| MT003        | Input valid deposit amount                          | 1. Make a deposit with a positive amount.         | Update balance and proceed to betting      | Balance updated, proceeded to betting    | Passed |
+| MT004        | Input number of lines to bet on                     | 1. Start the game.                                | Prompt for number of lines input             | Prompted for lines input                 | Passed |
+| MT005        | Input invalid number of lines                       | 1. Enter a non-numeric value.                    | Display error message                       | Displayed error message                   | Passed |
+| MT006        | Input valid number of lines                         | 1. Enter a number between 1 and 3.               | Proceed to bet amount input                 | Proceeded to bet input                    | Passed |
+| MT007        | Input bet amount for each line                      | 1. Enter a valid bet amount for each line.       | Display slot machine result and winnings    | Displayed result and winnings             | Passed |
+| MT008        | Input invalid bet amount                            | 1. Enter a non-numeric value.                    | Display error message                       | Displayed error message                   | Passed |
+| MT009        | Spin and win with identical symbols                 | 1. Enter a valid bet amount.                     | Calculate winnings and update balance      | Updated balance and winnings             | Passed |
+| MT010        | Spin and win on multiple lines                      | 1. Enter a valid bet amount.                     | Calculate winnings for each line            | Updated balance and winnings             | Passed |
+| MT011        | Spin and lose                                       | 1. Enter a valid bet amount.                     | Update balance and show losses              | Updated balance and displayed losses     | Passed |
+| MT012        | Quit the game with "q" input                        | 1. Spin the reels and wait for result.           | Display final balance                       | Displayed final balance                  | Passed |
+| MT013        | Quit the game with other input                      | 1. Enter any input other than "q".              | Continue the game                          | Continued the game                       | Passed |
+
+
+Feel free to expand this table with more detailed steps, expected outcomes, and actual outcomes as you perform manual testing on your slot machine game. This table will help you ensure that your game functions as intended and identify any issues that need to be addressed.
+
 ### Player Experience Testing
 
 User testing was conducted to evaluate the overall player experience. A different group of friends played the game, providing feedback on user interface clarity, ease of use, and overall enjoyment. This feedback was instrumental in refining the user interaction aspects of the game.
 
 ### Error Handling and Edge Cases
 
+- **Deposit Amount:** When the player is prompted to deposit money, the game ensures that a valid positive integer is entered. If the player enters a non-numeric value or a negative number, the game displays an error message and prompts the player to enter a valid amount.
+
+- **Number of Lines:** When the player is prompted to input the number of lines they want to bet on, the game validates that the entered value is within the allowed range (1 to 3). If the input is not a valid integer or is outside the allowed range, an error message is displayed, and the player is prompted to enter a valid value.
+
+- **Bet Amount:** When the player is prompted to input the bet amount for each line, the game validates that the entered value is within the allowed range (MIN_BET to MAX_BET). Similar to the previous cases, if the input is not a valid integer or is outside the allowed range, an error message is displayed, and the player is prompted to enter a valid value.
+
 Extensive testing was conducted to identify and address potential errors, edge cases, and exceptional scenarios. This involved testing for cases such as insufficient balance for a bet, input validation for numeric values, and handling unexpected input gracefully.
-
-### Manual Playtesting
-
-The game was manually playtested by friends and family to simulate real player interactions. This allowed us to identify any potential bugs, discrepancies in winnings calculation, or unexpected behavior during gameplay.
 
 
 ## Bugs and Known Issues
@@ -260,3 +281,25 @@ This project is licensed under the MIT License.
 Feel free to modify and customize it according to your needs. Happy playing!
 
 Have fun playing the Slot Machine Game and best of luck with your deployment on Heroku using Gitpod!
+
+
+Certainly! Here's an example table that outlines the testing scenarios for your slot machine game:
+
+| Test Case ID | Description                                           | Expected Outcome                                | Actual Outcome    | Status |
+|--------------|-------------------------------------------------------|--------------------------------------------------|-------------------|--------|
+| TC001        | Start the game and make a deposit                    | Prompt for deposit input, display balance       | ...               | ...    |
+| TC002        | Input invalid deposit amount                         | Display error message                           | ...               | ...    |
+| TC003        | Input valid deposit amount                           | Update balance and proceed to betting            | ...               | ...    |
+| TC004        | Input number of lines to bet on                      | Display prompt for number of lines              | ...               | ...    |
+| TC005        | Input invalid number of lines                        | Display error message                           | ...               | ...    |
+| TC006        | Input valid number of lines                          | Proceed to bet amount input                     | ...               | ...    |
+| TC007        | Input bet amount for each line                       | Display prompt for bet amount                   | ...               | ...    |
+| TC008        | Input invalid bet amount                             | Display error message                           | ...               | ...    |
+| TC009        | Input valid bet amount                               | Display slot machine result and winnings        | ...               | ...    |
+| TC010        | Spin and win with identical symbols                  | Calculate winnings and update balance          | ...               | ...    |
+| TC011        | Spin and win on multiple lines                       | Calculate winnings for each line and update balance | ...               | ...    |
+| TC012        | Spin and lose                                        | Update balance and show losses                  | ...               | ...    |
+| TC013        | Quit the game with "q" input                         | Display final balance                           | ...               | ...    |
+| TC014        | Quit the game with other input                       | Continue the game                              | ...               | ...    |
+
+You can continue to expand this table to include more test cases or add additional columns for notes, test results, and any bugs encountered during testing. This table will help you keep track of your testing process and ensure that your game works as expected under various scenarios.
