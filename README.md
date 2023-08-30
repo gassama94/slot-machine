@@ -281,25 +281,3 @@ This project is licensed under the MIT License.
 Feel free to modify and customize it according to your needs. Happy playing!
 
 Have fun playing the Slot Machine Game and best of luck with your deployment on Heroku using Gitpod!
-
-
-Certainly! Here's an example table that outlines the testing scenarios for your slot machine game:
-
-| Test Case ID | Description                                           | Expected Outcome                                | Actual Outcome    | Status |
-|--------------|-------------------------------------------------------|--------------------------------------------------|-------------------|--------|
-| TC001        | Start the game and make a deposit                    | Prompt for deposit input, display balance       | ...               | ...    |
-| TC002        | Input invalid deposit amount                         | Display error message                           | ...               | ...    |
-| TC003        | Input valid deposit amount                           | Update balance and proceed to betting            | ...               | ...    |
-| TC004        | Input number of lines to bet on                      | Display prompt for number of lines              | ...               | ...    |
-| TC005        | Input invalid number of lines                        | Display error message                           | ...               | ...    |
-| TC006        | Input valid number of lines                          | Proceed to bet amount input                     | ...               | ...    |
-| TC007        | Input bet amount for each line                       | Display prompt for bet amount                   | ...               | ...    |
-| TC008        | Input invalid bet amount                             | Display error message                           | ...               | ...    |
-| TC009        | Input valid bet amount                               | Display slot machine result and winnings        | ...               | ...    |
-| TC010        | Spin and win with identical symbols                  | Calculate winnings and update balance          | ...               | ...    |
-| TC011        | Spin and win on multiple lines                       | Calculate winnings for each line and update balance | ...               | ...    |
-| TC012        | Spin and lose                                        | Update balance and show losses                  | ...               | ...    |
-| TC013        | Quit the game with "q" input                         | Display final balance                           | ...               | ...    |
-| TC014        | Quit the game with other input                       | Continue the game                              | ...               | ...    |
-
-You can continue to expand this table to include more test cases or add additional columns for notes, test results, and any bugs encountered during testing. This table will help you keep track of your testing process and ensure that your game works as expected under various scenarios.
