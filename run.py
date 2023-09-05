@@ -3,6 +3,7 @@ import random
 import colorama
 from colorama import Fore, Style
 
+
 colorama.init(autoreset=True)
 
 
@@ -34,9 +35,15 @@ print_colored_bold(WELCOME_MESSAGE, Fore.YELLOW)
 print(GAME_EXPLAINATION)
 print()
 print_colored_bold("- 🎰 Enjoy the thrill of spinning! 🎰 -", Fore.BLUE)
+print("Press 'e' to start the game...")
 
-input("Press Enter to start the game...")
-clear_screen()
+while True:
+    user_input = input()
+    if user_input.lower() == 'e':
+        clear_screen()
+        break
+
+# Clear the screen or perform any other actions you need here
 
 
 MAX_LINES = 3
